@@ -13,6 +13,7 @@
 .badges{justify-content:flex-end;padding-right:54px}
 .category-badge{background:var(--yellow);color:var(--navy)}
 .topline,.nav{display:none}
+body{zoom:.8}
 </style></head>
 <body>
 <div class="topline"></div><nav class="nav"><div class="brand">SIGMUND<small>THE POWER OF COLLABORATION</small></div><div class="navlinks"><a href="#">About</a><a href="#">Open • Source <span>⌄</span></a><a href="#">Admin <span>⌄</span></a><a href="#">RFP Hub</a><a href="#">Resources</a><a href="#">Academic Programs</a></div><div class="bubble">♧</div><button class="welcome">♙ &nbsp; Welcome, Sigmund ADMIN</button></nav>
@@ -35,3 +36,6 @@ const originalRender=render;render=function(){originalRender();const decode=s=>{
 <script>
 const renderWithTwoCategories=render;render=function(){renderWithTwoCategories();document.querySelectorAll('.card').forEach((card,index)=>{const matches=ideas.filter(x=>(active==='All'||(x.Tags||'').includes(active))&&(!search.value.toLowerCase().trim()||JSON.stringify(x).toLowerCase().includes(search.value.toLowerCase().trim())));const x=matches[sort==='newest'?'reverse':'slice']?.()[index];if(!x)return;const badges=card.querySelector('.badges');const heart=badges.querySelector('.heart');badges.insertBefore(Object.assign(document.createElement('span'),{className:'badge category-badge',textContent:secondFitCategory(x)}),heart)});};render();
 </script></body></html>
+
+Source: https://github.com/sigmundproject/untours/blob/main/index.html
+Logo: https://opengraph.githubassets.com/381b7efa229000989742ca3a647237cd19beb4d949ae4071feafe9412bde1ea9/sigmundproject/untours
