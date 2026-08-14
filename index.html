@@ -13,7 +13,11 @@
 .badges{justify-content:flex-end;padding-right:54px}
 .category-badge{background:var(--yellow);color:var(--navy)}
 .topline,.nav{display:none}
-body{zoom:.8}
+body{zoom:.64}
+.description{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:22px}
+.challenge{margin-top:4px;margin-bottom:20px}
+.challenge-label{display:block;font-size:13px;font-weight:900;letter-spacing:.7px;color:var(--navy);margin-bottom:6px}
+.challenge-text{font-size:16px;line-height:1.4;color:#313b4a;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 </style></head>
 <body>
 <div class="topline"></div><nav class="nav"><div class="brand">SIGMUND<small>THE POWER OF COLLABORATION</small></div><div class="navlinks"><a href="#">About</a><a href="#">Open • Source <span>⌄</span></a><a href="#">Admin <span>⌄</span></a><a href="#">RFP Hub</a><a href="#">Resources</a><a href="#">Academic Programs</a></div><div class="bubble">♧</div><button class="welcome">♙ &nbsp; Welcome, Sigmund ADMIN</button></nav>
@@ -35,7 +39,7 @@ const originalRender=render;render=function(){originalRender();const decode=s=>{
 </script>
 <script>
 const renderWithTwoCategories=render;render=function(){renderWithTwoCategories();document.querySelectorAll('.card').forEach((card,index)=>{const matches=ideas.filter(x=>(active==='All'||(x.Tags||'').includes(active))&&(!search.value.toLowerCase().trim()||JSON.stringify(x).toLowerCase().includes(search.value.toLowerCase().trim())));const x=matches[sort==='newest'?'reverse':'slice']?.()[index];if(!x)return;const badges=card.querySelector('.badges');const heart=badges.querySelector('.heart');badges.insertBefore(Object.assign(document.createElement('span'),{className:'badge category-badge',textContent:secondFitCategory(x)}),heart)});};render();
+</script>
+<script>
+const renderWithChallenge=render;render=function(){renderWithChallenge();document.querySelectorAll('.card').forEach(card=>{const description=card.querySelector('.description');if(!description||card.querySelector('.challenge'))return;const full=description.textContent;const challenge=document.createElement('div');challenge.className='challenge';challenge.innerHTML='<span class="challenge-label">CHALLENGE WE\'RE SOLVING:</span><div class="challenge-text"></div>';challenge.querySelector('.challenge-text').textContent=full;description.after(challenge)});};render();
 </script></body></html>
-
-Source: https://github.com/sigmundproject/untours/blob/main/index.html
-Logo: https://opengraph.githubassets.com/381b7efa229000989742ca3a647237cd19beb4d949ae4071feafe9412bde1ea9/sigmundproject/untours
